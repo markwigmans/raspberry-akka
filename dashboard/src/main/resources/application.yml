@@ -1,0 +1,7 @@
+server:
+  port: 8883
+
+turbine:
+  appConfig: portal,races
+  aggregator:
+    clusterConfig: WEB,RACES
