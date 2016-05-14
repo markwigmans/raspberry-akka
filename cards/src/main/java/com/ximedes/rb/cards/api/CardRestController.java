@@ -67,7 +67,6 @@ public class CardRestController {
         return deferredResult;
     }
 
-
     /**
      * @param apiCard
      * @return

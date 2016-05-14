@@ -76,7 +76,6 @@ public class CardActor extends AbstractLoggingActor {
         cards.clear();
     }
 
-
     @Value
     @EqualsAndHashCode(callSuper = true)
     public static final class Retrieve extends Command {
