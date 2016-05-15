@@ -1,6 +1,7 @@
 package com.ximedes;
 
 import javafx.application.Application;
+import org.springframework.boot.Banner;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -15,7 +16,10 @@ public abstract class AbstractJavaFxApplicationSupport extends Application {
 
     @Override
     public void init() throws Exception {
-        applicationContext = new SpringApplicationBuilder(getClass()).headless(false).run(savedArgs);
+        applicationContext = new SpringApplicationBuilder(getClass())
+                .bannerMode(Banner.Mode.OFF)
+                .headless(false)
+                .run(savedArgs);
         applicationContext.getAutowireCapableBeanFactory().autowireBean(this);
     }
 
