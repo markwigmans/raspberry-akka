@@ -1,5 +1,6 @@
 package com.ximedes;
 
+import javafx.application.Preloader;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -30,6 +31,8 @@ public class App extends AbstractJavaFxApplicationSupport {
 
     @Override
     public void start(Stage stage) throws Exception {
+        notifyPreloader(new Preloader.StateChangeNotification(Preloader.StateChangeNotification.Type.BEFORE_START));
+
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(new Browser(url), width, height, Color.web("#666970")));
         stage.centerOnScreen();
