@@ -1,6 +1,5 @@
 package com.ximedes.rb.service.actor;
 
-
 import akka.actor.AbstractActor;
 import akka.actor.OneForOneStrategy;
 import akka.actor.Props;

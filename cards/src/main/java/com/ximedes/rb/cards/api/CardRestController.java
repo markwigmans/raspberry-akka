@@ -57,10 +57,10 @@ public class CardRestController {
     @RequestMapping(method = RequestMethod.POST)
     public DeferredResult<ApiCard> create(@RequestBody ApiCard apiCard) {
         log.info("create({})", apiCard);
-        final DeferredResult<ApiCard> deferredResult = new DeferredResult<>();
+        val deferredResult = new DeferredResult<ApiCard>();
 
-        final Card card = domainMapper.map(apiCard, Card.class);
-        final Observable<CardActor.CommandProcessed> future = cardService.create(card);
+        val card = domainMapper.map(apiCard, Card.class);
+        val future = cardService.create(card);
         future.map(r -> domainMapper.map(r.getCard().get(), ApiCard.class))
                 .subscribe(c -> deferredResult.setResult(c), deferredResult::setErrorResult);
 
@@ -74,10 +74,10 @@ public class CardRestController {
     @RequestMapping(value = "/image/reverse", method = RequestMethod.POST)
     public DeferredResult<ApiCard> reserveImage(@RequestBody ApiCard apiCard) {
         log.info("reserve image({})", apiCard);
-        final DeferredResult<ApiCard> deferredResult = new DeferredResult<>();
+        val deferredResult = new DeferredResult<ApiCard>();
 
-        final Card card = domainMapper.map(apiCard, Card.class);
-        final Observable<CardActor.CommandProcessed> future = cardService.reverseImage(card);
+        val card = domainMapper.map(apiCard, Card.class);
+        val future = cardService.reverseImage(card);
         future.map(r -> domainMapper.map(r.getCard().get(), ApiCard.class))
                 .subscribe(c -> deferredResult.setResult(c), deferredResult::setErrorResult);
 

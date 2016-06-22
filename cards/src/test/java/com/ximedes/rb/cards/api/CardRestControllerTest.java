@@ -6,6 +6,7 @@ import com.jayway.restassured.builder.RequestSpecBuilder;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.specification.RequestSpecification;
 import com.ximedes.rb.cards.CardApp;
+import com.ximedes.rb.cards.IntegrationTest;
 import com.ximedes.rb.cards.api.model.ApiCard;
 import com.ximedes.rb.cards.model.Card;
 import com.ximedes.rb.cards.service.CardService;
@@ -35,21 +36,15 @@ import static org.junit.Assert.assertTrue;
  * Created by mawi on 12/12/2015.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = CardApp.class)
-@WebIntegrationTest(randomPort = true)
-@TestPropertySource("classpath:test.properties")
-public class CardRestControllerTest {
-
-    @Value("${local.server.port}")
-    int port;
+public class CardRestControllerTest extends IntegrationTest {
 
     @Autowired
     private CardService cardService;
 
     @Before
     public void setUp() {
+        super.setUp();
         cardService.reset();
-        RestAssured.port = port;
     }
 
     @Test

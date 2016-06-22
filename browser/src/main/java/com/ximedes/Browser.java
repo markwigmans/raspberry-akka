@@ -18,8 +18,6 @@ class Browser extends Region {
     private final WebEngine webEngine = browser.getEngine();
 
     public Browser(final String url) {
-        //apply the styles
-        getStyleClass().add("browser");
 
         webEngine.getLoadWorker().stateProperty().addListener((obs, oldValue, newValue) -> {
             if (newValue == Worker.State.SUCCEEDED) {
