@@ -1,5 +1,8 @@
 package com.ximedes.rb.model;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.time.LocalDateTime;
 
 /**
@@ -19,5 +22,24 @@ public abstract class Event {
 
     public LocalDateTime getCreated() {
         return created;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Event event = (Event) o;
+
+        return new EqualsBuilder()
+                .append(created, event.created)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder().append(created).toHashCode();
     }
 }
